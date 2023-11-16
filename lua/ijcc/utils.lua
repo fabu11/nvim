@@ -1,0 +1,68 @@
+local M = {}
+
+function M.close_buffer()
+    if vim.bo.buftype == 'terminal' then
+        vim.cmd(':startinsert')
+        vim.api.nvim_input('<C-d>')
+    end
+    local buffer_count = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+    if buffer_count == 1 then
+        if vim.bo.modified then
+            vim.api.nvim_err_writeln("Buffer has unsaved changes!")
+            return
+        end
+        vim.cmd('Dashboard')
+    else
+        if vim.bo.modified then
+            vim.api.nvim_err_writeln("Buffer has unsaved changes!")
+            return
+        end
+        vim.cmd('Bunlink')
+    end
+end
+
+
+function M.get_dashboard_art()
+    local array = {
+
+{ "",
+  "██▓ ▄▄▄██▀▀▀▄████▄      ██▒   █▓ ██▓ ███▄ ▄███▓",
+  "▓██▒   ▒██  ▒██▀ ▀█     ▓██░   █▒▓██▒▓██▒▀█▀ ██▒",
+  "▒██▒   ░██  ▒▓█    ▄     ▓██  █▒░▒██▒▓██    ▓██░",
+  "░██░▓██▄██▓ ▒▓▓▄ ▄██▒     ▒██ █░░░██░▒██    ▒██ ",
+  "░██░ ▓███▒  ▒ ▓███▀ ░      ▒▀█░  ░██░▒██▒   ░██▒",
+  "░▓   ▒▓▒▒░  ░ ░▒ ▒  ░      ░ ▐░  ░▓  ░ ▒░   ░  ░",
+  " ▒ ░ ▒ ░▒░    ░  ▒         ░ ░░   ▒ ░░  ░    ░ ░",
+  " ▒ ░ ░ ░ ░  ░                ░░   ▒ ░░      ░   ",
+  " ░   ░   ░  ░ ░               ░   ░         ░   ",
+  "          ░                  ░                  ",
+  "", ""},
+
+{ "",
+  "▪   ▐▄▄▄ ▄▄·      ▌ ▐·▪  • ▌ ▄ ·. ",
+   "██   ·██▐█ ▌▪    ▪█·█▌██ ·██ ▐███▪",
+   "▐█·▪▄ ████ ▄▄    ▐█▐█•▐█·▐█ ▌▐▌▐█·",
+   "▐█▌▐▌▐█▌▐███▌     ███ ▐█▌██ ██▌▐█▌",
+   "▀▀▀ ▀▀▀•·▀▀▀     . ▀  ▀▀▀▀▀  █▪▀▀▀",
+   "", ""},
+
+    {"",
+    [[_//     _//    _//         _//         _//_//_//       _//]],
+    [[_//     _// _//   _//       _//       _// _//_/ _//   _///]],
+    [[_//     _//_//               _//     _//  _//_// _// _ _//]],
+    [[_//     _//_//                _//   _//   _//_//  _//  _//]],
+    [[_//     _//_//                 _// _//    _//_//   _/  _//]],
+    [[_//_/   _// _//   _//           _////     _//_//       _//]],
+    [[_// _////     _////              _//      _//_//       _//]],
+    "",""}
+   }
+        if #array > 0 then
+            local randomIndex = math.random(1, #array)
+            return array[randomIndex]
+        else
+            return nil
+        end
+    end
+
+
+return M

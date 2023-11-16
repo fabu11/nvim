@@ -1,7 +1,10 @@
+vim.cmd.anoremenu{"PopUp.Open\\ File <Cmd>:lua require('telescope.builtin').find_files()<CR>"}
+vim.cmd.anoremenu{"PopUp.Close\\ File <Cmd>:lua require('ijcc.utils').close_buffer()<CR>"}
+
+
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
-
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4

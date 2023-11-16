@@ -1,12 +1,24 @@
 local M = {}
 
 function M.close_buffer()
-  local buffer_count = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
-  if buffer_count == 1 then
-    vim.cmd('qa')
-  else
-    vim.cmd('bd')
-  end
+    if vim.bo.buftype == 'terminal' then
+        vim.cmd(':startinsert')
+        vim.api.nvim_input('<C-d>')
+    end
+    local buffer_count = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
+    if buffer_count == 1 then
+        if vim.bo.modified then
+            vim.api.nvim_err_writeln("Buffer has unsaved changes!")
+            return
+        end
+        vim.cmd('Dashboard')
+    else
+        if vim.bo.modified then
+            vim.api.nvim_err_writeln("Buffer has unsaved changes!")
+            return
+        end
+        vim.cmd('Bunlink')
+    end
 end
 
 

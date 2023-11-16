@@ -5,10 +5,16 @@ bufferline.setup {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
         numbers =  "ordinal",
-        close_command = "Bunlink",
-        right_mouse_command = "Bunlink", -- can be a string | function | false, see "Mouse actions"
+        close_command = function ()
+            require("ijcc.utils").close_buffer()
+        end,
+        right_mouse_command = function ()
+            require("ijcc.utils").close_buffer()
+        end,
         left_mouse_command = 'buffer %d',
-        middle_mouse_command = "Bunlink",
+        middle_mouse_command = function ()
+            require("ijcc.utils").close_buffer()
+        end,
         indicator = {
             icon = '▎', -- this should be omitted if indicator style is not 'icon'
             style = 'icon'

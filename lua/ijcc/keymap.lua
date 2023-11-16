@@ -2,9 +2,12 @@
 local keymap = vim.keymap.set
 local opts = {noremap = true, silent = true}
 
-
 vim.g.mapleader = " "
 
+
+
+-- Close buffer / exit nvim
+keymap("n", 'q', ":lua require('ijcc.utils').close_buffer()<CR>", opts)
 
 -- Better Terminal Nav
 ----- Window Nav
@@ -50,8 +53,5 @@ keymap("i", "jk", "<Esc>")
 -- Copy to system clipboard for WSL specifically
 keymap("n", "<leader>y", ":'<,'>w !clip.exe<CR><CR>")
 keymap("v", "<leader>y", ":'<,'>w !clip.exe<CR><CR>")
-
--- Close buffer / exit nvim
-keymap("n", 'q', ":lua require('ijcc.utils').close_buffer()<CR>", opts)
 
 

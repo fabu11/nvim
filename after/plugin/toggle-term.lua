@@ -7,7 +7,7 @@ require("toggleterm").setup{
 }
 
 local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local lazygit = Terminal:new({ cmd = "lazygit", hidden = true, direction='float' })
 
 function _LAZYGIT_TOGGLE()
   lazygit:toggle()
@@ -16,7 +16,6 @@ end
 -- Keymaps
 -- QOL (esc to exit term mode, q to kill)
 vim.api.nvim_set_keymap('t', '<esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', 'q', ':lua CLOSE_TERMINAL()<CR><CR>', { noremap = true, silent = true })
 
 -- toggle all/split 1-3 (only works for split terminals)
 vim.api.nvim_set_keymap('n', '<leader>t1', '<cmd>ToggleTerm 1<CR>', {noremap = true, silent = true})

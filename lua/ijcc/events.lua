@@ -1,42 +1,31 @@
--- Hack to show Splash screen + file tree... 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        local is_no_file = vim.fn.argc() == 0
-        local is_dir = vim.fn.argc() == 1 and vim.fn.argv(0) == "NvimTree_1"
-        vim.cmd("NvimTreeClose")
-        if is_no_file or is_dir then
-            vim.cmd("Startup display")
-            vim.cmd("NvimTreeToggle")
+-- when exiting vim, update settings.json
+vim.api.nvim_create_autocmd("VimLeavePre", {
+    callback = function ()
+        local path = vim.fn.stdpath('config') .. "/settings.json"
+        local existingData = {}
+        local fp, err = io.open(path, 'r')
+        if fp then
+            local content = fp:read('*all')
+            fp:close()
+            local success, data = pcall(vim.json.decode, content)
+            if success then
+                existingData = data
+            else
+                print("Error decoding existing JSON:", data)
+                return
+            end
         else
-            vim.cmd("NvimTreeToggle")
+            print(err, " | Creating a new settings.json file.")
         end
-        vim.cmd("wincmd l")
-    end,
-})
-
-
-vim.api.nvim_create_autocmd("TabLeave", {
-    callback = function ()
-        vim.cmd("wincmd l")
-    end,
-})
-
--- Hack to Open filetree on newtab 
-vim.api.nvim_create_autocmd("TabNewEntered", {
-    callback = function ()
-        vim.cmd("NvimTreeClose")
-        vim.cmd("NvimTreeToggle")
-        vim.cmd("wincmd l")
-    end,
-})
-
-
--- Quit if filetree last buffer... Dangerous but worth it?
-vim.api.nvim_create_autocmd("BufEnter", {
-    nested = true,
-    callback = function()
-        if #vim.api.nvim_tabpage_list_wins(0) == 1 and vim.api.nvim_buf_get_name(0):match("NvimTree_") ~= nil then
-            vim.cmd("q")
+        local currentColorscheme = vim.g.colors_name or "onedark"
+        existingData.colorscheme = currentColorscheme
+        local newContent = vim.json.encode(existingData)
+        local write_fp = io.open(path, 'w')
+        if write_fp then
+            write_fp:write(newContent)
+            write_fp:close()
+        else
+            print("Error writing to settings.json")
         end
-  end
+    end
 })

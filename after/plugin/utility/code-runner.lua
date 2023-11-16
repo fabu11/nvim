@@ -7,8 +7,8 @@ require('code_runner').setup({
     },
     python = "python3 -u",
     c = {
-      "gcc -Wall -std=c99 -pedantic $fileName -o $fileNameWithoutExt &&",
-      "./$fileNameWithoutExt"
+        "make",
+        "./$fileNameWithoutExt"
     }
   },
 })

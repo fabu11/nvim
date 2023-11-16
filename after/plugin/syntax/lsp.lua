@@ -23,7 +23,7 @@ cmp.setup({
 })
 
 lsp_zero.set_preferences({
-    suggest_lsp_servers = false,
+    suggest_lsp_servers = true,
     sign_icons = {
         error = '⚠',
         warn = '⚠',
@@ -31,7 +31,6 @@ lsp_zero.set_preferences({
         info = '🛈'
 	}
 })
-
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -57,4 +56,8 @@ require'lspconfig'.pyright.setup{
 	settings = {
 		{autoImportCompletion = true}
 	}
+}
+
+require'lspconfig'.clangd.setup{
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
 }

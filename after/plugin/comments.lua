@@ -4,24 +4,24 @@ require('Comment').setup(
     sticky = true,
     ignore = nil,
     toggler = {
-        line = 'g/',
-        block = 'gb/',
+        line = 'c/',
+        block = 'cb',
     },
     ---LHS of operator-pending mappings in NORMAL and VISUAL mode
     opleader = {
         ---Line-comment keymap
-        line = 'g/',
+        line = 'c/',
         ---Block-comment keymap
-        block = 'gb',
+        block = 'cb',
     },
     ---LHS of extra mappings
     extra = {
         ---Add comment on the line above
-        above = 'gcO',
-        ---Add comment on the line below 
-        below = 'gco',
+        above = 'cO',
+        ---Add comment on the line below   
+        below = 'co',
         ---Add comment at the end of line
-        eol = 'gA',
+        eol = 'cA',
     },
     ---Enable keybindings
     ---NOTE: If given `false` then the plugin won't create any mappings

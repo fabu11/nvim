@@ -6,14 +6,14 @@ bufferline.setup {
         themable = true, -- allows highlight groups to be overriden i.e. sets highlights as default
         numbers =  "ordinal",
         close_command = function ()
-            require("ijcc.utils").close_buffer()
+            require("ijcc.utils").close_buffer(false)
         end,
         right_mouse_command = function ()
-            require("ijcc.utils").close_buffer()
+            require("ijcc.utils").close_buffer(false)
         end,
         left_mouse_command = 'buffer %d',
         middle_mouse_command = function ()
-            require("ijcc.utils").close_buffer()
+            require("ijcc.utils").close_buffer(false)
         end,
         indicator = {
             icon = '▎', -- this should be omitted if indicator style is not 'icon'

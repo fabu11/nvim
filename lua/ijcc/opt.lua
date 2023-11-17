@@ -1,3 +1,4 @@
+vim.cmd.aunmenu{"PopUp.How-to\\ disable\\ mouse"}
 vim.cmd.anoremenu{"PopUp.Open\\ File <Cmd>:lua require('telescope.builtin').find_files()<CR>"}
 vim.cmd.anoremenu{"PopUp.Close\\ File <Cmd>:lua require('ijcc.utils').close_buffer()<CR>"}
 

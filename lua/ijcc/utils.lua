@@ -1,6 +1,8 @@
 local M = {}
-
-function M.close_buffer()
+function M.wk_open()
+    vim.o.timeout=true
+end
+function M.close_buffer(exit)
     if vim.bo.buftype == 'terminal' then
         vim.cmd(':startinsert')
         vim.api.nvim_input('<C-d>')
@@ -10,6 +12,10 @@ function M.close_buffer()
         if vim.bo.modified then
             vim.api.nvim_err_writeln("Buffer has unsaved changes!")
             return
+        end
+        if exit then
+           vim.cmd('qa')
+           return
         end
         vim.cmd('Dashboard')
     else

@@ -78,6 +78,7 @@ return require('packer').startup(function(use)
       requires = { 'nvim-tree/nvim-web-devicons', opt = true }
   }
 
+  -- dashboard
   use {
       'nvimdev/dashboard-nvim',
       event = 'VimEnter',
@@ -139,5 +140,17 @@ return require('packer').startup(function(use)
           }
       end,
       requires = {'nvim-tree/nvim-web-devicons'}
+  }
+
+
+  -- which key
+  use {
+      "folke/which-key.nvim",
+  }
+
+  --trouble (diagnostics)
+  use{
+      "folke/trouble.nvim",
+      requires = { "nvim-tree/nvim-web-devicons" },
   }
 end)

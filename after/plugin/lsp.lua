@@ -32,7 +32,6 @@ lsp_zero.set_preferences({
 	}
 })
 
-
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {"clangd", "jedi_language_server", "pyright", "jdtls", "lua_ls"},

@@ -3,28 +3,21 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  -- TELESCOPE
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.4',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-  -- ONE DARK THEME
-  use ({
-	  'navarasu/onedark.nvim',
-	  as = "onedark",
-	  config = function()
-		  require('onedark').setup {
-			  style = 'darker'
-		  }
-		  require('onedark').load()
-		  vim.cmd('colorscheme onedark')
-	  end
-  })
+    use 'wbthomason/packer.nvim'
+    -- Luarocks
+    -- TELESCOPE
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
+        -- or                            , branch = '0.1.x',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+    -- THEMES
+    use { "ellisonleao/gruvbox.nvim" }
+    use{"folke/tokyonight.nvim"}
+    use ({
+        'navarasu/onedark.nvim',
+        as = "onedark",
+    })
 
   -- TREE SITTER
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -83,74 +76,22 @@ return require('packer').startup(function(use)
       'nvimdev/dashboard-nvim',
       event = 'VimEnter',
       config = function()
-          require('dashboard').setup {
-              -- config
-              theme = 'doom', --  theme is doom and hyper default is hyper
-              config = {
-                  header = require("ijcc.utils").get_dashboard_art(),
-                  center = {
-                      {
-                          desc = 'Find File           ',
-                          desc_hl = 'Number',
-                          key = 'f',
-                          key_hl = 'Number',
-                          key_format = ' %s', -- remove default surrounding `[]`
-                          action = "require('telescope.builtin').find_files()"
-                      },
-                      {
-                          desc = 'Open Tree           ',
-                          desc_hl = 'Number',
-                          key = 't',
-                          key_hl = 'Number',
-                          key_format = ' %s', -- remove default surrounding `[]`
-                          action = "vim.api.nvim_command(':NvimTreeOpen')"
-                      },
-                      {
-                          desc = 'Find Recent Files  ',
-                          desc_hl = 'Number',
-                          key = 'r',
-                          key_hl = 'Number',
-                          key_format = ' %s', -- remove default surrounding `[]`
-                          action = "require('telescope.builtin').oldfiles()"
-                      },
-                      {
-                          desc = 'Find Word          ',
-                          desc_hl = 'Number',
-                          key = 'w',
-                          key_hl = 'Number',
-                          key_format = ' %s', -- remove default surrounding `[]`
-                          action = "require('telescope.builtin').live_grep()"
-                      },
-                      {
-                          desc = 'Search Git Files   ',
-                          desc_hl = 'Number',
-                          key = 'g',
-                          key_hl = 'Number',
-                          key_format = ' %s', -- remove default surrounding `[]`
-                          action = "require('telescope.builtin').git_files()"
-                      },
-                  },
-                  footer = {"i just can't vim       https://github.com/fabu11"}
-              },
-              hide = {
-                  statusline=true,    -- hide statusline default is true
-                  tabline = true,       -- hide the tabline
-                  winbar  = true,       -- hide winbar
-              },
-          }
+          require("ijcc.utils").c_dashboard() -- prob slower but no config in packer = :)
       end,
       requires = {'nvim-tree/nvim-web-devicons'}
   }
-
-
   -- which key
   use {
       "folke/which-key.nvim",
   }
-
   --trouble (diagnostics)
   use{
       "folke/trouble.nvim",
       requires = { "nvim-tree/nvim-web-devicons" },
   }
+  --Autopairs
+  use {
+	"windwp/nvim-autopairs",
+    config = function() require("nvim-autopairs").setup {} end
+}
 end)

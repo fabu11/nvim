@@ -10,15 +10,17 @@ local function my_on_attach(bufnr)
 
   -- custom mappings
   vim.keymap.set("n", "<Right>", api.node.open.edit, opts("Open"))
+  vim.keymap.set("n", "l", api.node.open.edit, opts("Open"))
 
   vim.keymap.set("n", "<2-LeftMouse>", api.node.open.edit, opts("Open"))
 
   vim.keymap.set("n", "<Left>", api.node.navigate.parent_close, opts "Close Directory")
+  vim.keymap.set("n", "h", api.node.navigate.parent_close, opts "Close Directory")
   vim.keymap.set("n", "v", api.node.open.vertical, opts "Open: Vertical Split")
   vim.keymap.del("n", "<C-k>", { buffer = bufnr })
 
   vim.keymap.set("n", "R", api.tree.reload)
-  vim.keymap.set('n', '<C-]>',   api.tree.change_root_to_node,        opts('CD'))
+  vim.keymap.set('n', '<C-]>', api.tree.change_root_to_node, opts('CD'))
 end
 
 -- pass to setup along with your other options

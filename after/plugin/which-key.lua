@@ -1,16 +1,21 @@
 local wk = require("which-key")
-
-
-local opts = {
+local tsc_opt = {
+  pickers = {
+    colorscheme = {
+      enable_preview = true
+    }
+  }
+}
+local n_opts = {
     mode = "n",
-    prefix="<Space>",
+    prefix="<space>",
     buffer=nil,
     silent=true,
     noremap=true,
     nowait=false,
     expr=false,
 }
-local maps = {
+local n_maps = {
     ["1"] = {"<Cmd>BufferLineGoToBuffer 1<CR>", "Show Buffer 1"},
     ["2"] = {"<Cmd>BufferLineGoToBuffer 2<CR>", "Show Buffer 2"},
     ["3"] = {"<Cmd>BufferLineGoToBuffer 3<CR>", "Show Buffer 3"},
@@ -51,9 +56,43 @@ local maps = {
     A = {nil, "Add comment to end of line"},
     O = {nil, "Add comment line above"},
     o = {nil, "Add comment line below"},
-   }
+   },
+    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"},
+    ["T"]={"<cmd>lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>", "Choose Theme"},
 }
-wk.register(maps, opts)
+
+
+local v_opts = {
+    mode = "v",
+    prefix="<space>",
+    buffer=nil,
+    silent=true,
+    noremap=true,
+    nowait=false,
+    expr=false,
+}
+
+local v_maps = {
+    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"}
+}
+
+local x_opts = {
+    mode = "v",
+    prefix="<space>",
+    buffer=nil,
+    silent=true,
+    noremap=true,
+    nowait=false,
+    expr=false,
+}
+
+local x_maps = {
+    [">"] = {">>", "Shift Right"},
+    ["<"] = {"<lt><lt>", "Shift Left"}
+}
+wk.register(n_maps, n_opts)
+wk.register(v_maps, v_opts)
+wk.register(x_maps, x_opts)
 
 wk.setup {
   plugins = {
@@ -80,6 +119,11 @@ wk.setup {
     padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
     winblend = 1, -- value between 0-100 0 for fully opaque and 100 for fully transparent
     zindex = 1000, -- positive value to position WhichKey above other floating windows.
+  },
+  triggers="<space>",
+  triggers_nowait = {
+    "<lt>",
+    "<gt>",
   },
   ignore_missing = true,
   disable = {

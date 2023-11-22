@@ -14,10 +14,7 @@ return require('packer').startup(function(use)
     -- THEMES
     use { "ellisonleao/gruvbox.nvim" }
     use{"folke/tokyonight.nvim"}
-    use ({
-        'navarasu/onedark.nvim',
-        as = "onedark",
-    })
+    use ({'navarasu/onedark.nvim'})
 
   -- TREE SITTER
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -49,8 +46,16 @@ return require('packer').startup(function(use)
     }
   }
 
+  --sig help
+  use ("hrsh7th/cmp-nvim-lsp-signature-help")
+
   -- undotree
   use ('mbbill/undotree')
+
+  --vim lastplace
+  use{
+      'farmergreg/vim-lastplace',
+  }
 
   -- Tabline
   use({ 'seblj/nvim-tabline', requires = { 'nvim-tree/nvim-web-devicons' } })

@@ -1,11 +1,10 @@
 local M = {}
--- TODO: generalize and de-densify...
-function M.readInit()
+
+function M.readSetting(key)
     local path = vim.fn.stdpath('config') .. "/settings.json"
     local fp, err = io.open(path, 'r')
     if not fp then
         print(err, " |  Creating settings.json...")
-        vim.cmd("colorscheme onedark")
         return
     end
     local content = fp:read('*all')
@@ -17,14 +16,13 @@ function M.readInit()
     local success, data = pcall(vim.json.decode, content)
     if not success then
         print("Error decoding JSON:", data)
-        return
+        return nil
     end
-        if data["colorscheme"] then
-        local color_value = data.colorscheme
-        print(color_value)
-        vim.cmd("colorscheme " .. color_value)
+        if data[key] then
+            return  data[key]
     else
-        print("Missing 'color' key in settings.json")
+        print("Missing ", key, " in settings.json")
+        return nil
     end
 end
 
@@ -89,7 +87,7 @@ end
 function M.close_buffer(exit)
     if vim.bo.buftype == 'terminal' then
         vim.cmd(':startinsert')
-        vim.api.nvim_input('<C-d>')
+        vim.api.nvim_input('<C-d>') -- quit terminal 
     end
     local buffer_count = vim.fn.len(vim.fn.getbufinfo({ buflisted = 1 }))
     if buffer_count == 1 then

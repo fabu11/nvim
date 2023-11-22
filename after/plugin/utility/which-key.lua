@@ -1,11 +1,5 @@
 local wk = require("which-key")
-local tsc_opt = {
-  pickers = {
-    colorscheme = {
-      enable_preview = true
-    }
-  }
-}
+
 local n_opts = {
     mode = "n",
     prefix="<space>",
@@ -59,6 +53,16 @@ local n_maps = {
    },
     y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"},
     ["T"]={"<cmd>lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>", "Choose Theme"},
+    w={
+        name="window",
+        ["2"]={"<cmd>vs<cr>", "Split into 2"},
+        ["3"]={"<cmd>vs<CR><cmd>vs<CR>", "Split into 2"},
+        ["<Left>"]={"<cmd>vertical resize +5<CR>", "Resize Left"},
+        ["<Right>"]={"<cmd>vertical resize -5<CR>", "Resize Left"},
+        ["<Up>"]={"<cmd>resize +5<CR>", "Resize Up"},
+        ["<Down>"]={"<cmd>resize -5<CR>", "Resize Down"},
+        ["="]={"<cmd>wincmd =<CR>", "Resize Equal"}
+    }
 }
 
 
@@ -73,7 +77,12 @@ local v_opts = {
 }
 
 local v_maps = {
-    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"}
+    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"},
+    c = {
+        name="Comments",
+        ["/"] = {nil, "Toggle Line"},
+        b = {nil, "Toggle Block"},
+    }
 }
 
 local x_opts = {

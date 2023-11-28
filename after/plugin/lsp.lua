@@ -24,23 +24,41 @@ cmp.setup({
 
 lsp_zero.set_preferences({
     suggest_lsp_servers = true,
-    sign_icons = {
-        error = '⚠',
-        warn = '⚠',
-        hint = '🛈',
-        info = '🛈'
-	}
+})
+
+lsp_zero.set_sign_icons({
+  error = '✘',
+  warn = '▲',
+  hint = '⚑',
+  info = '»'
 })
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {"clangd", "jedi_language_server", "pyright", "jdtls", "lua_ls"},
+  ensure_installed = {"clangd", "pyright", "jdtls", "lua_ls"},
   handlers = {
     lsp_zero.default_setup,
   },
 })
 
 -- Gets rid of vim error
+require'lspconfig'.pyright.setup(
+    {
+        settings = {
+            pyright = {
+                autoImportCompletion = true
+            },
+            python = {
+                analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = 'openFilesOnly',
+                    useLibraryCodeForTypes = true,
+                    typeCheckingMode = 'off'
+                }
+            }
+        }
+    }
+)
 require'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {
@@ -52,12 +70,14 @@ require'lspconfig'.lua_ls.setup {
   },
 }
 
-require'lspconfig'.pyright.setup{
-	settings = {
-		{autoImportCompletion = true}
-	}
-}
-
 require'lspconfig'.clangd.setup{
     filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }
 }
+
+
+vim.lsp.handlers['textDocument/signatureHelp']  = vim.lsp.with(vim.lsp.handlers['signature_help'], {
+    border = 'single',
+    close_events = { "CursorMoved", "BufHidden" },
+})
+
+vim.keymap.set('i', '<c-s>', vim.lsp.buf.signature_help)

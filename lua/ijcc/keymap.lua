@@ -34,3 +34,30 @@ keymap("i", "jk", "<Esc>")
 
 --Terminal Esc
 vim.api.nvim_set_keymap('t', '<esc>', [[<C-\><C-n>]], {noremap = true, silent = true})
+
+-- Custom shiftwidth settings
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "c",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "cpp",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "h",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "hpp",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "lua",
+    command = "setlocal shiftwidth=2 tabstop=2",
+})
+

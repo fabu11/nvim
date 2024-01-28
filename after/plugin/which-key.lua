@@ -26,7 +26,8 @@ local n_maps = {
         r = {"<cmd>Telescope oldfiles<cr>", "Recent Files"},
         w = {"<cmd>Telescope live_grep<cr>", "Find Words"},
         s = {"<cmd>Telescope grep_string<cr>", "Find String"},
-        u = {"<cmd>UndotreeToggle<CR>", "Toggle UndoTree"}
+        u = {"<cmd>UndotreeToggle<CR>", "Toggle UndoTree"},
+        p = {"<cmd>MarkdownPreviewToggle<CR>", "Toggle .md Preview"}
     },
    t = {
         name="Terminal",
@@ -62,7 +63,8 @@ local n_maps = {
         ["<Up>"]={"<cmd>resize +5<CR>", "Resize Up"},
         ["<Down>"]={"<cmd>resize -5<CR>", "Resize Down"},
         ["="]={"<cmd>wincmd =<CR>", "Resize Equal"}
-    }
+    },
+    
 }
 
 

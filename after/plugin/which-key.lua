@@ -27,7 +27,8 @@ local n_maps = {
         w = {"<cmd>Telescope live_grep<cr>", "Find Words"},
         s = {"<cmd>Telescope grep_string<cr>", "Find String"},
         u = {"<cmd>UndotreeToggle<CR>", "Toggle UndoTree"},
-        p = {"<cmd>MarkdownPreviewToggle<CR>", "Toggle .md Preview"}
+        p = {"<cmd>MarkdownPreviewToggle<CR>", "Toggle .md Preview"},
+        ["="] = {"gg=G", "Indent File"}
     },
    t = {
         name="Terminal",

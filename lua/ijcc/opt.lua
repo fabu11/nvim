@@ -5,6 +5,7 @@ vim.cmd.anoremenu{"PopUp.Close\\ File <Cmd>:lua require('ijcc.utils').close_buff
 
 vim.opt.guicursor = ""
 
+vim.opt.showmode = false
 vim.opt.nu = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4

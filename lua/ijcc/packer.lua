@@ -15,6 +15,7 @@ return require('packer').startup(function(use)
     use { "ellisonleao/gruvbox.nvim" }
     use{"folke/tokyonight.nvim"}
     use ({'navarasu/onedark.nvim'})
+    use "rebelot/kanagawa.nvim"
 
   -- TREE SITTER
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})

@@ -1,3 +1,4 @@
 .netrwhist
 plugin/packer_compiled.lua
+after/plugin/code-runner.lua
 settings.json

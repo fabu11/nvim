@@ -22,6 +22,7 @@ return require('packer').startup(function(use)
   use('nvim-treesitter/playground')
 
   use 'numToStr/Comment.nvim'
+
   -- NVIM-Tree
   use ({
       'nvim-tree/nvim-tree.lua',
@@ -69,6 +70,10 @@ return require('packer').startup(function(use)
 
   -- toggleTerm
   use ({"akinsho/toggleterm.nvim", tag = '*'})
+
+  use {
+      'stevearc/stickybuf.nvim',
+  }
 
   -- statusline
   use {

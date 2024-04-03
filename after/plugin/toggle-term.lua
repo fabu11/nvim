@@ -4,6 +4,9 @@ require("toggleterm").setup{
   size=12,
   close_on_exit=true,
   persist_size = true,
+  on_create = function()
+    pcall(function() vim.cmd':PinBuftype' end)
+  end
 }
 
 local Terminal  = require('toggleterm.terminal').Terminal

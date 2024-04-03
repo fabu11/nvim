@@ -7,12 +7,17 @@ vim.g.mapleader = ""
 
 vim.api.nvim_set_keymap('n', '\\q', 'q', { noremap = true })
 keymap("n", 'q', "<Cmd>lua require('ijcc.utils').close_buffer()<CR>", opts)
--- Better Terminal Nav
 ----- Window Nav
-keymap('n', '<C-Left>', ':wincmd h<CR>', opts)
-keymap('n', '<C-Right>', ':wincmd l<CR>', opts)
-keymap('n', '<C-Up>', ':wincmd k<CR>', opts)
-keymap('n', '<C-Down>', ':wincmd j<CR>', opts)
+keymap({'n'}, '<C-Left>', ':wincmd h<CR>', opts)
+keymap({'n'}, '<C-Right>', ':wincmd l<CR>', opts)
+keymap({'n'}, '<C-Up>', ':wincmd k<CR>', opts)
+keymap({'n'}, '<C-Down>', ':wincmd j<CR>', opts)
+keymap({'t'}, '<C-Left>', '<C-\\><C-N>:wincmd h<CR>', opts)
+keymap({'t'}, '<C-Right>', '<C-\\><C-N>:wincmd l<CR>', opts)
+keymap({'t'}, '<C-Up>', '<C-\\><C-N>:wincmd k<CR>', opts)
+keymap({'t'}, '<C-Down>', '<C-\\><C-N>:wincmd j<CR>', opts)
+
+-- allows for :wqa with terminals open...
 
 
 -- Better indention
@@ -25,6 +30,7 @@ vim.keymap.set("n", "<S-Tab>", "<lt><lt>", { silent = true, desc = "Outdent - n"
 vim.keymap.set("n", "<Tab>", ">>", { silent = true, desc = "Indent" })
 vim.keymap.set("v", "<S-Tab>", "<lt>gv", { silent = true, desc = "Outdent" })
 vim.keymap.set("v", "<Tab>", ">gv", { silent = true, desc = "Indent" })
+
 
 -- Q.O.L
 keymap("n", "Q", "<nop>")

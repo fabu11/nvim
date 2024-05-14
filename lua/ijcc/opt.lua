@@ -2,6 +2,10 @@ vim.cmd.aunmenu{"PopUp.How-to\\ disable\\ mouse"}
 vim.cmd.anoremenu{"PopUp.Open\\ File <Cmd>:lua require('telescope.builtin').find_files()<CR>"}
 vim.cmd.anoremenu{"PopUp.Close\\ File <Cmd>:lua require('ijcc.utils').close_buffer()<CR>"}
 
+-- remove comment on newline
+vim.cmd('autocmd BufEnter * set formatoptions-=cro')
+vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
+
 
 vim.opt.guicursor = ""
 

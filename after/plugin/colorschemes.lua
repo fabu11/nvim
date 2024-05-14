@@ -3,7 +3,6 @@ require('onedark').setup {
 }
 require('gruvbox').setup()
 require('tokyonight').setup()
-require("kanagawa").load("dragon")
 
 require('kanagawa').setup({
     compile = false,             -- enable compiling the colorscheme
@@ -30,5 +29,3 @@ require('kanagawa').setup({
     },
 })
 
--- setup must be called before loading
-vim.cmd("colorscheme kanagawa")

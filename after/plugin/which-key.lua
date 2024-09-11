@@ -1,145 +1,83 @@
 local wk = require("which-key")
 
-local n_opts = {
-    mode = "n",
-    prefix="<space>",
-    buffer=nil,
-    silent=true,
-    noremap=true,
-    nowait=false,
-    expr=false,
-}
-local n_maps = {
-    ["1"] = {"<Cmd>BufferLineGoToBuffer 1<CR>", "Show Buffer 1"},
-    ["2"] = {"<Cmd>BufferLineGoToBuffer 2<CR>", "Show Buffer 2"},
-    ["3"] = {"<Cmd>BufferLineGoToBuffer 3<CR>", "Show Buffer 3"},
-    ["4"] = {"<Cmd>BufferLineGoToBuffer 4<CR>", "Show Buffer 4"},
-    ["5"] = {"<Cmd>BufferLineGoToBuffer 5<CR>", "Show Buffer 5"},
-    ["6"] = {"<Cmd>BufferLineGoToBuffer 6<CR>", "Show Buffer 6"},
-    ["7"] = {"<Cmd>BufferLineGoToBuffer 7<CR>", "Show Buffer 7"},
-    ["8"] = {"<Cmd>BufferLineGoToBuffer 8<CR>", "Show Buffer 8"},
-    ["9"] = {"<Cmd>BufferLineGoToBuffer 9<CR>", "Show Buffer 9"},
-    f = {
-        name="File",
-        t = {"<cmd>NvimTreeToggle<cr>", "Toggle Tree"},
-        f = {"<cmd>Telescope find_files<cr>", "Find Files"},
-        r = {"<cmd>Telescope oldfiles<cr>", "Recent Files"},
-        w = {"<cmd>Telescope live_grep<cr>", "Find Words"},
-        s = {"<cmd>Telescope grep_string<cr>", "Find String"},
-        u = {"<cmd>UndotreeToggle<CR>", "Toggle UndoTree"},
-        p = {"<cmd>MarkdownPreviewToggle<CR>", "Toggle .md Preview"},
-        ["="] = {"gg=G", "Indent File"}
-    },
-   t = {
-        name="Terminal",
-        t = {"<cmd>ToggleTerm direction=horizontal size=10<CR>", "Open Horizontal Terminal"},
-        f = {"<cmd>ToggleTerm direction=float<CR>", "Open Floating Terminal"},
-        v = {"<cmd>ToggleTerm direction=vertical size=100<CR><CR>", "Open Vertical Terminal"},
-        g = {"<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Open LazyGit"},
-        ["1"] = {"<cmd>ToggleTerm 1<CR>", "(Current Term must be Horiz) Split 1"},
-        ["2"] = {"<cmd>ToggleTerm 2<CR>", "(Current Term must be Horiz) Split 2"},
-        ["3"] = {"<cmd>ToggleTerm 3<CR>", "(Current Term must be Horiz) Split 3"},
-   },
-   e={"<cmd>TroubleToggle<CR>", "Toggle Diagnostics"},
-   l={
-       name="Language",
-       r={":RunCode<CR>", "Run Code"},
-   },
-   c ={
-    name="Comments",
-    ["/"] = {nil, "Toggle Line"}, -- Nil because defined in comments.lua through setup()
-    b = {nil, "Toggle Block"},
-    A = {nil, "Add comment to end of line"},
-    O = {nil, "Add comment line above"},
-    o = {nil, "Add comment line below"},
-   },
-    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"},
-    ["T"]={"<cmd>lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>", "Choose Theme"},
-    w={
-        name="window",
-        ["2"]={"<cmd>vs<cr>", "Split into 2"},
-        ["3"]={"<cmd>vs<CR><cmd>vs<CR>", "Split into 2"},
-        ["<Left>"]={"<cmd>vertical resize +5<CR>", "Resize Left"},
-        ["<Right>"]={"<cmd>vertical resize -5<CR>", "Resize Left"},
-        ["<Up>"]={"<cmd>resize +5<CR>", "Resize Up"},
-        ["<Down>"]={"<cmd>resize -5<CR>", "Resize Down"},
-        ["="]={"<cmd>wincmd =<CR>", "Resize Equal"}
-    },
-    
-}
+--set leader to space
+vim.api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-
-local v_opts = {
-    mode = "v",
-    prefix="<space>",
-    buffer=nil,
-    silent=true,
-    noremap=true,
-    nowait=false,
-    expr=false,
-}
-
-local v_maps = {
-    y={":'<,'>w !clip.exe<CR><CR>", "Copy to System Clipboard"},
-    c = {
-        name="Comments",
-        ["/"] = {nil, "Toggle Line"},
-        b = {nil, "Toggle Block"},
-    }
-}
-
-local x_opts = {
-    mode = "v",
-    prefix="<space>",
-    buffer=nil,
-    silent=true,
-    noremap=true,
-    nowait=false,
-    expr=false,
-}
-
-local x_maps = {
-    [">"] = {">>", "Shift Right"},
-    ["<"] = {"<lt><lt>", "Shift Left"}
-}
-wk.register(n_maps, n_opts)
-wk.register(v_maps, v_opts)
-wk.register(x_maps, x_opts)
-
-wk.setup {
-  plugins = {
-    marks = true,
-    registers = true,
-    spelling = {
-      enabled = false,
-      suggestions = 20,
-    },
-    presets = {
-      operators = true,
-      motions = true,
-      text_objects = true,
-      windows = true,
-      nav = true,
-      z = true,
-      g = true,
-    },
+wk.setup({
+  preset = "modern",
+  win = {
+    no_overlap = true,
+    title_pos = "center",
   },
-  window = {
-    border = "rounded", -- none, single, double, shadow
-    position = "bottom", -- bottom, top
-    margin = { 5, 5, 1, 5 }, -- extra window margin [top, right, bottom, left]. When between 0 and 1, will be treated as a percentage of the screen size.
-    padding = { 1, 1, 1, 1 }, -- extra window padding [top, right, bottom, left]
-    winblend = 1, -- value between 0-100 0 for fully opaque and 100 for fully transparent
-    zindex = 1000, -- positive value to position WhichKey above other floating windows.
+  layout = {
+    width = { min = 20 },
+    spacing = 5,
   },
-  triggers="<space>",
-  triggers_nowait = {
-    "<lt>",
-    "<gt>",
+  icons = {
+    separator = "»",
   },
-  ignore_missing = true,
-  disable = {
-    buftypes = {},
-    filetypes = { "TelescopePrompt" },
-  },
-}
+  -- icons = { mappings = false, rules = false },
+})
+
+wk.add({
+  {"<leader><leader>", hidden=true, desc="close which-key", "<esc>", mode = "n"},
+  -- Buffer Shortcuts
+  {"<leader>", desc="Buffer [1-9]", mode="n"},
+  {"<leader>1", desc="Buffer 1", hidden=true, "<Cmd>BufferLineGoToBuffer 1<CR>", mode="n"},
+  {"<leader>2", desc="Buffer 2", hidden=true, "<Cmd>BufferLineGoToBuffer 2<CR>", mode="n"},
+  {"<leader>3", desc="Buffer 3", hidden=true, "<Cmd>BufferLineGoToBuffer 3<CR>", mode="n"},
+  {"<leader>4", desc="Buffer 4", hidden=true, "<Cmd>BufferLineGoToBuffer 4<CR>", mode="n"},
+  {"<leader>5", desc="Buffer 5", hidden=true, "<Cmd>BufferLineGoToBuffer 5<CR>", mode="n"},
+  {"<leader>6", desc="Buffer 6", hidden=true, "<Cmd>BufferLineGoToBuffer 6<CR>", mode="n"},
+  {"<leader>7", desc="Buffer 7", hidden=true, "<Cmd>BufferLineGoToBuffer 7<CR>", mode="n"},
+  {"<leader>8", desc="Buffer 8", hidden=true, "<Cmd>BufferLineGoToBuffer 8<CR>", mode="n"},
+  {"<leader>9", desc="Buffer 9", hidden=true, "<Cmd>BufferLineGoToBuffer 9<CR>", mode="n"},
+  -- File Group
+  { "<leader>f", group = "File", icon={icon="", color="green"}},
+  ----> Telescope
+  { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files", mode = "n" },
+  { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent Files", mode = "n", icon = {icon = "", color="green"}},
+  { "<leader>fw", "<cmd>Telescope live_grep<cr>", desc = "Search Words", mode = "n", icon = {icon = "", color="green"}},
+  { "<leader>fs", "<cmd>Telescope grep_string<cr>", desc = "Live Grep", mode = "n", icon = {icon = "", color="green"}},
+  ----> Toggle Trees
+  { "<leader>ft", "<cmd>NvimTreeToggle<cr>", desc = "Toggle File Tree", mode = "n", icon = {icon="󰙅", color="green"}},
+  { "<leader>fu", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undo Tree", mode = "n", icon={icon = "󰙅", color="green"}},
+  -- Terminal Group
+  { "<leader>t", group = "Terminal"},
+  {"<leader>tt", "<cmd>ToggleTerm direction=horizontal size=10<CR>", desc = "Toggle Horiz Terminal", mode = "n"},
+  {"<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "Toggle Float Terminal", mode = "n"},
+  {"<leader>tv", "<cmd>ToggleTerm direction=vertical size=100<CR><CR>", desc = "Toggle Vert Terminal", mode = "n"},
+  {"<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", desc = "Toggle LazyGit", mode = "n",
+    icon = {icon = "",
+    color = "red"}},
+  {"<leader>t#", desc="[1-3] Split Horizontal Terminal", mode="n"},
+  {"<leader>t1", "<cmd>ToggleTerm 1<CR>", hidden=true, desc = "Horiz Terminal Split 1", mode = "n"},
+  {"<leader>t2", "<cmd>ToggleTerm 2<CR>", hidden=true, desc = "Horiz Terminal Split 2", mode = "n"},
+  {"<leader>t3", "<cmd>ToggleTerm 3<CR>", hidden=true, desc = "Horiz Terminal Split 3", mode = "n"},
+  -- Trouble Diag
+  {"<leader>e", group="Diagnostics"},
+  {"<leader>ee", "<cmd>Trouble diagnostics toggle<CR>", desc="Toggle Diagnostics"},
+  {"<leader>el", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc="LSP Definitions / references / ..."},
+  {"<leader>eq", "<cmd>Trouble qflist toggle<cr>", desc="Toggle Quick Fix List", mode="n"},
+  -- code runner
+  {"<leader>l", group="Language", icon={icon="", color="purple"}},
+  {"<leader>lr", desc="Code Runner", icon={icon="", color='purple'}},
+  ----> Misc.
+  { "<leader>f=", "gg=Ggg", desc = "Format File", mode = "n", icon={icon="󰁨", color="green"}},
+  { "<leader>y", ":'<,'>w !clip.exe<CR><CR>", desc="Copy to System Clipboard", mode="v"},
+  {"<leader>T", "<cmd>lua require('telescope.builtin').colorscheme({enable_preview=true})<CR>",
+    desc="Change Theme", icon={icon="", color="orange"}},
+  {
+    mode = { "n", "v" }, -- NORMAL and VISUAL mode
+    -- reg for copy to system Clipboard
+    { "<leader>q", "<cmd>q<cr>", desc = "Quit" }, -- no need to specify mode since it's inherited
+    { "<leader>w", "<cmd>w<cr>", desc = "Write", icon={icon="", color="yellow"} },
+    {"<leader>c", group="Comment", icon={icon="", color="cyan"}},
+    {"<leader>cb", desc="Comment Block", icon={icon="", color="cyan"}},
+    {"<leader>c/", desc="Comment Line", icon={icon="", color="cyan"}},
+
+  }
+})
+

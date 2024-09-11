@@ -1,10 +1,13 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')` from your init.vimpack
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-    -- Luarocks
+    -- icons
+    use {
+      "echasnovski/mini.icons",
+    }
     -- TELESCOPE
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
@@ -94,6 +97,7 @@ return require('packer').startup(function(use)
   -- which key
   use {
       "folke/which-key.nvim",
+
   }
   --trouble (diagnostics)
   use{

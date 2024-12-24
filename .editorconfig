@@ -1,0 +1,9 @@
+[*]
+indent_style = space
+indent_size = 4
+
+[*.{lua, c, cpp, h, hpp}]
+indent_style = space
+indent_size = 2
+
+

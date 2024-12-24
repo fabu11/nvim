@@ -31,7 +31,6 @@ require("lazy").setup({
     {
       "rebelot/kanagawa.nvim",
       config = function()
-        vim.cmd("set background=dark")
         require('kanagawa').setup({
           colors = {
             theme = {
@@ -50,9 +49,7 @@ require("lazy").setup({
             light = "lotus",
           },
         })
-        vim.cmd.colorscheme "kanagawa-dragon"
       end,
-      priority = 1000
     },
     {
       "nvim-telescope/telescope.nvim",

@@ -157,5 +157,9 @@ return {
     cmd = "Trouble",
     keys = { -- defined in wk.lua
     }
+  },
+  {
+    "windwp/nvim-autopairs",
+    opts = {},
   }
 }

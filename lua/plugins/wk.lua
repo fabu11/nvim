@@ -42,13 +42,14 @@ return {
         ----> Toggle Trees
         { "<leader>ft", "<cmd>lua require('oil').toggle_float()<cr>", desc = "Toggle File Tree", mode = "n", icon = { icon = "󰙅", color = "green" } },
         { "<leader>fu", "<cmd>UndotreeToggle<CR>", desc = "Toggle Undo Tree", mode = "n", icon = { icon = "󰙅", color = "green" } },
-        -- Term
+        -- Term. please see terminals.lua for context
         { "<leader>t", group = "Terminal" },
         { "<c-\\>", "<cmd>lua _TOGGLE_FLOAT_TERM()<CR>", desc = "Toggle Float Terminal", mode = "ni" },
         { "<leader>tt", "<cmd>Telescope toggleterm_manager<CR>", desc = "Terminal Manager", mode = "n" },
         { "<leader>t1", "<cmd>lua _TOGGLE_TERMINAL_1()<CR>", desc = "Toggle Terminal 1", mode = "n" },
         { "<leader>t2", "<cmd>lua _TOGGLE_TERMINAL_2()<CR>", desc = "Toggle Terminal 2", mode = "n" },
         { "<leader>t3", "<cmd>lua _TOGGLE_TERMINAL_3()<CR>", desc = "Toggle Terminal 3", mode = "n" },
+        { "<leader>tg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", desc = "Toggle LazyGit", mode = "n", icon = { icon = "", color = "red" } },
         { "<leader>to", "<cmd>lua _TOGGLE_ALL_TERMINALS_ON()<CR>", desc = "Open  Terminals [1-3]", mode = "n" },
         { "<leader>tc", "<cmd>lua _TOGGLE_ALL_TERMINALS_OFF()<CR>", desc = "Close Terminals [1-3]", mode = "n" },
 

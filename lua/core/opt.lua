@@ -2,8 +2,12 @@
 local set = vim.opt
 local cmd = vim.cmd
 
-set.shiftwidth = 4
+set.shiftwidth = 2
+set.softtabstop = 2
+set.tabstop = 2
+set.smartindent = true
 set.nu = true
+
 
 -- mouse settings
 cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
@@ -15,7 +19,6 @@ cmd('autocmd BufEnter * set formatoptions-=cro')
 cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 --misc
 set.cursorlineopt = "number"
-set.smartindent = true
 set.wrap = false
 set.termguicolors = true
 set.scrolloff = 8
@@ -24,7 +27,7 @@ set.isfname:append("@-@")
 set.hidden = true
 -- Ignore default vim colorschemes
 vim.cmd(
-  [[set wildignore+=blue.vim,darkblue.vim,delek.vim,desert.vim,elflord.vim,evening.vim,industry.vim,koehler.vim,lunaperche.vim,morning.vim,murphy.vim,pablo.vim,peachpuff.vim,quiet.vim,retrobox.vim,ron.vim,shine.vim,slate.vim,sorbet.vim,torte.vim,wildcharm.vim,zaibatsu.vim,zellner.vim,habamax.vim,default.vim]])
+    [[set wildignore+=blue.vim,darkblue.vim,delek.vim,desert.vim,elflord.vim,evening.vim,industry.vim,koehler.vim,lunaperche.vim,morning.vim,murphy.vim,pablo.vim,peachpuff.vim,quiet.vim,retrobox.vim,ron.vim,shine.vim,slate.vim,sorbet.vim,torte.vim,wildcharm.vim,zaibatsu.vim,zellner.vim,habamax.vim,default.vim]])
 
 
 -- undo

@@ -55,9 +55,10 @@ return {
 
         -- Trouble Diag
         { "<leader>e", group = "Diagnostics" },
-        { "<leader>ee", "<cmd>Trouble diagnostics toggle win.position=right<CR>", desc = "Toggle Diagnostics" },
+        { "<leader>ee", "<cmd>Trouble diagnostics toggle win.position=bottom<CR>", desc = "Toggle Diagnostics" },
         { "<leader>el", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "LSP Definitions / references / ..." },
         { "<leader>eq", "<cmd>Trouble qflist toggle<cr>", desc = "Toggle Quick Fix List", mode = "n" },
+        { "<leader>ea", desc = "Telescope Code Action", mode = "n" },
         -- code runner
         { "<leader>l", group = "Language", icon = { icon = "", color = "purple" } },
         { "<leader>lr", desc = "Code Runner", icon = { icon = "", color = 'purple' } },

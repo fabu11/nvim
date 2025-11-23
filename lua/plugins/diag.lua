@@ -1,7 +1,12 @@
 return {
+  -- Trouble
   {
-    "lewis6991/gitsigns.nvim",
+    "folke/trouble.nvim",
     opts = {},
-  }
+    cmd = "Trouble",
+  },
+
+  -- Undo Tree 
+  {"mbbill/undotree"},
 }
 

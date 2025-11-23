@@ -1,5 +1,8 @@
-return { 
-  ------- MISC ---------------------------
+return {
+  -- Telescope
+  {
+    "nvim-telescope/telescope.nvim"
+  },
   -- Git signs
   {
     "lewis6991/gitsigns.nvim",
@@ -61,6 +64,7 @@ return {
                   show_hidden = true,
               },
               float = {
+                  border="single",
                   max_width = math.floor(vim.o.columns * 0.5), -- 80% of the screen width
                   max_height = math.floor(vim.o.lines * 0.5),  -- 80% of the screen height
                   preview_split = "auto",
@@ -84,7 +88,7 @@ return {
         bufferline.setup {
             options = {
                 mode = "buffers",
-                themable = true, 
+                themable = true,
                 numbers = "ordinal",
                 close_command = function()
                     require("core.utils").close_buffer(false)
@@ -94,7 +98,7 @@ return {
                     require("core.utils").close_buffer(false)
                 end,
                 indicator = {
-                    icon = '▎', 
+                    icon = '▎',
                     style = 'icon'
                 },
                 buffer_close_icon = '✘',

@@ -1,7 +1,7 @@
 return {
   {
     "e-ink-colorscheme/e-ink.nvim",
-     --priority = 1000,
+     priority = 1000,
      config = function ()
         require("e-ink").setup()
         --vim.cmd.colorscheme "e-ink"
@@ -10,20 +10,24 @@ return {
   },
   {
     "rebelot/kanagawa.nvim",
+    priority = 1000,
     config = function()
       require('kanagawa').setup()
     end
   },
   {
     "folke/tokyonight.nvim",
+    priority = 1000,
     opts={},
   },
   {
     "navarasu/onedark.nvim",
+    priority = 1000,
     opts = {}
   },
   {
     "zaldih/themery.nvim",
+    priority = 1000,
     lazy = false,
     config = function()
       require("themery").setup({
@@ -108,6 +112,13 @@ return {
         livePreview=true,
       })
     end
-  }
+  },
+  {
+    "raddari/last-color.nvim",
+    config = function()
+      local theme = require('last-color').recall() or "vim"
+      vim.cmd.colorscheme(theme)
+    end,
+  },
 
 }

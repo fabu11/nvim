@@ -13,8 +13,10 @@ keymap("v", "<S-Tab>", "<lt>gv", { silent = true, desc = "Outdent" })
 keymap("v", "<Tab>", ">gv", { silent = true, desc = "Indent" })
 
 -- move line
-keymap("v", "<C-A-Up>", ":m '<-2<CR>gv=gv")
-keymap("v", "<C-A-Down>", ":m '>+1<CR>gv=gv")
+keymap("v", "<A-Up>", ":m '<-2<CR>gv=gv")
+keymap("v", "<A-Down>", ":m '>+1<CR>gv=gv")
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv")
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv")
 
 --fast escape
 keymap("i", "jk", "<Esc>")

@@ -10,11 +10,11 @@
                              ░   ░   ░  ░ ░               ░   ░         ░     
                                   ░                  ░                  
 ```
-
+#### Developed and maintained for WSL2 - Ubuntu 22.04 on aarm64
 ## Dependencies
 <details><summary>nvim</summary>
 
-#### Hack: 
+#### app image: 
 ```
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
@@ -52,15 +52,23 @@ npm --version
 
 - [LuaRocks](https://github.com/luarocks/luarocks/wiki/Download)
 - [Rust & Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)
-    > Ubuntu:
+    - Ubuntu:
         ```
         curl https://sh.rustup.rs -sSf | sh
         ```
 - [Ripgrep](https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#installation)
-    > Ubuntu:
+    - Ubuntu:
         ```
         sudo apt install ripgrep
         ```
 - [LazyGit](https://github.com/jesseduffield/lazygit?tab=readme-ov-file#installation)
-    
+- clangd-21
+    - Ubuntu: 
+        ```
+        cd /tmp
+        wget https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.5/LLVM-21.1.5-Linux-ARM64.tar.xz
+        sudo tar -xf LLVM-21.1.5-Linux-ARM64.tar.xz -C /opt/
+        sudo ln -s /opt/LLVM-21.1.5-Linux-ARM64/bin/clangd /usr/local/bin/clangd-21
+        ```
 </details>
+

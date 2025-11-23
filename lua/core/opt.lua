@@ -8,10 +8,19 @@ set.tabstop = 2
 set.smartindent = true
 set.nu = true
 
+
+vim.opt.showmode = false
+
+
 -- mouse settings
 cmd.aunmenu { "PopUp.How-to\\ disable\\ mouse" }
 cmd.anoremenu { "PopUp.Open\\ File <Cmd>:lua require('telescope.builtin').find_files()<CR>" }
 cmd.anoremenu { "PopUp.Close\\ File <Cmd>:lua require('ijcc.utils').close_buffer()<CR>" }
+
+--relative and normal line number
+set.number = true
+--set.relativenumber = true
+--vim.opt.statuscolumn = "%s %{v:lnum} %{v:relnum} "
 
 -- remove comment on newline
 cmd('autocmd BufEnter * set formatoptions-=cro')
@@ -35,3 +44,9 @@ set.swapfile = false
 set.backup = false
 set.undodir = os.getenv("HOME") .. "/.vim/undodir"
 set.undofile = true
+
+vim.diagnostic.config({
+  virtual_text = true,
+})
+
+

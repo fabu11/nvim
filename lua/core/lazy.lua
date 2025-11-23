@@ -28,30 +28,6 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    {
-      "rebelot/kanagawa.nvim",
-      config = function()
-        require('kanagawa').setup({
-          colors = {
-            theme = {
-              lotus = {},
-              dragon = {},
-              all = {
-                ui = {
-                  bg_gutter = "none"
-                }
-              }
-            }
-          },
-          theme = "dragon",
-          background = {
-            dark = "dragon",
-            light = "lotus",
-          },
-        })
-      end,
-    },
-    { "mbbill/undotree" },
     { import = "plugins" },
   },
 })

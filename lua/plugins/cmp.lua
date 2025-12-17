@@ -20,5 +20,11 @@ return {
       signature = {enabled = true}
     },
     opts_extend = { "sources.default" }
+  },
+-- bracket pairs
+  {
+      'windwp/nvim-autopairs',
+      event = "InsertEnter",
+      config = true
   }
 }
